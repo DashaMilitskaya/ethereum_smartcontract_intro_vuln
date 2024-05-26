@@ -1,0 +1,118 @@
+.divTable{
+	display: table;
+	width: 1000px;
+}
+.divTableRow {
+	display: table-row;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+}
+.divTableCell1, .divTableHead {
+  vertical-align: middle;
+  text-align: center;
+  align-items: center;
+	/* border: 1px solid #999999; */
+	display: table-cell;
+	padding: 15px 0px;
+  width: 100px;
+}
+.divTableCell2, .divTableCell3 {
+  vertical-align: middle;
+  text-align: center;
+  align-items: center;
+	/* border: 1px solid #999999; */
+	display: table-cell;
+	padding: 15px 0px;
+  width: 450px;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	font-weight: bold;
+}
+.divTableFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
+}
+
+body {
+  height: 100vh;
+  background: rgb(11, 3, 48); /* For browsers that do not support gradients */
+  background: linear-gradient(to bottom right, #0b0330, #5904a4);
+  font-family: "Inter Medium", sans-serif;
+}
+
+.desc {
+  display: inline-block;
+  text-align: left;
+  margin: 0px;
+  font-family: "Inter Medium", sans-serif;
+  display: inline-block;
+  font-size: 18px;
+  color: white;
+}
+
+.status {
+  display: inline-block;
+  text-align: left;
+  margin: 0px;
+  font-family: "Inter Medium", sans-serif;
+  display: inline-block;
+  font-size: 18px;
+  color: white;
+}
+
+
+.contractcontainer {
+  transform: translate(-50%, -50%);
+  height: 60%;
+  width: 60%;
+}
+
+.maincontainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 60%;
+  width: 60%;
+}
+
+.buttonswrapperGrid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-gap: 1.5rem;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.web3button {
+  display: inline-block;
+  outline: 0;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  padding: 9px 20px;
+  font-size: 18px;
+  height: 40px;
+  width: auto;
+  color: #fff;
+  text-align: center;
+  background: linear-gradient(90deg, #a600ff 0, #ff5bd9 100%);
+  border-radius: 25px;
+  transition: all .2s ease-in-out;
+}
+.web3button:hover {
+  box-shadow: 0 0 0 0.15rem #5cd5ea;
+  transform: scale(1.1);
+}
+

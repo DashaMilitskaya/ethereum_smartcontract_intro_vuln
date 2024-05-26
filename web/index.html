@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Send Transaction Example</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/web3/4.7.0/web3.min.js"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    
+    <script type="text/javascript" src="abi.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <link rel="stylesheet" href="./styles.css" />
+    
+<script>
+
+  let factoryContractImpl = new web3.eth.Contract(factoryContractAbi, factoryAddress, {
+    //from: currentAccount, // default from address
+    gasPrice: '20000000000' // default gas price in wei, 20 gwei in this case
+    });
+
+  function DeployVulnContract (contractName, eventName, amount, statusId) {
+
+    try {
+
+      factoryContractImpl.methods[contractName]().send({from: currentAccount, value: amount});
+        
+      factoryContractImpl.events[eventName]({}, function(error, event){ console.log(event); })
+        .on('data', function(event){
+          //console.log(event);
+          let vulnContractAddress = event.returnValues[0]
+          console.log ("Return values: " + vulnContractAddress + "\n");
+          document.getElementById(statusId).innerText = vulnContractAddress;
+          document.getElementById(statusId).style.color = "SpringGreen";
+          });
+      
+    } catch (err) {
+      console.log (err);
+    }
+  }
+  
+  function DeployVuln0() {
+    DeployVulnContract ('DeployVuln0', 'DeployVuln0Event', defaultVulnDeployAmount, 'Vuln0Status');
+  }
+  
+  function DeployVuln1() {
+    DeployVulnContract ('DeployVuln1', 'DeployVuln1Event', defaultVulnDeployAmount, 'Vuln1Status');
+  }
+  
+  function DeployVuln2() {
+    DeployVulnContract ('DeployVuln2', 'DeployVuln2Event', defaultVulnDeployAmount, 'Vuln2Status');
+  }
+  
+  function DeployVuln3() {
+    DeployVulnContract ('DeployVuln3', 'DeployVuln3Event', defaultVulnDeployAmount, 'Vuln3Status');
+  }
+  
+  function DeployVuln4() {
+    DeployVulnContract ('DeployVuln4', 'DeployVuln4Event', defaultVulnDeployAmount, 'Vuln4Status');
+  }
+  
+</script>
+
+</head>
+<body>
+
+
+<main>
+
+
+<div class="divTable">
+<div class="divTableBody">
+  <div class="divTableRow">
+    <div class="divTableCell1">&nbsp;
+    </div>
+    <div class="divTableCell2">&nbsp;
+      <button onclick="connect()" class="web3button">Подключить MetaMask</button>
+    </div>
+    <div class="divTableCell3">&nbsp;
+      <p id="connectStatus" class="status" style="color: red">disconnected</p>
+    </div>
+  </div>
+  <div class="divTableRow">
+    <div class="divTableCell1">&nbsp;
+    </div>
+    <div class="divTableCell2">&nbsp;
+      <button onclick="switchEthereumChain(defaultChainId)" class="web3button">Подключить сеть</button>
+    </div>
+    <div class="divTableCell3">&nbsp;
+      <p id="netStatus" class="status" style="color: red">disconnected</p>
+    </div>
+  </div>
+  <div class="divTableRow">
+    <div class="divTableCell1">&nbsp
+      <p id="Vuln0Desc" class="desc" style="color: white">Vuln0</p>
+    </div>
+    <div class="divTableCell2">&nbsp;
+      <button onclick="DeployVuln0()" class="web3button">Деплой контракта</button>
+    </div>
+    <div class="divTableCell3">&nbsp;
+      <p id="Vuln0Status" class="status" style="color: red"></p>
+    </div>
+  </div>
+  <div class="divTableRow">
+    <div class="divTableCell1">&nbsp
+      <p id="Vuln1Desc" class="desc" style="color: white">Vuln1</p>
+    </div>
+    <div class="divTableCell2">&nbsp;
+      <button onclick="DeployVuln1()" class="web3button">Деплой контракта</button>
+    </div>
+    <div class="divTableCell3">&nbsp;
+      <p id="Vuln1Status" class="status" style="color: red"></p>
+    </div>
+  </div>
+  <div class="divTableRow">
+    <div class="divTableCell1">&nbsp
+      <p id="Vuln2Desc" class="desc" style="color: white">Vuln2</p>
+    </div>
+    <div class="divTableCell2">&nbsp;
+      <button onclick="DeployVuln2()" class="web3button">Деплой контракта</button>
+    </div>
+    <div class="divTableCell3">&nbsp;
+      <p id="Vuln2Status" class="status" style="color: red"></p>
+    </div>
+  </div>
+  <div class="divTableRow">
+    <div class="divTableCell1">&nbsp
+      <p id="Vuln3Desc" class="desc" style="color: white">Vuln3</p>
+    </div>
+    <div class="divTableCell2">&nbsp;
+      <button onclick="DeployVuln3()" class="web3button">Деплой контракта</button>
+    </div>
+    <div class="divTableCell3">&nbsp;
+      <p id="Vuln3Status" class="status" style="color: red"></p>
+    </div>
+  </div>
+  <div class="divTableRow">
+    <div class="divTableCell1">&nbsp
+      <p id="Vuln4Desc" class="desc" style="color: white">Vuln4</p>
+    </div>
+    <div class="divTableCell2">&nbsp;
+      <button onclick="DeployVuln4()" class="web3button">Деплой контракта</button>
+    </div>
+    <div class="divTableCell3">&nbsp;
+      <p id="Vuln4Status" class="status" style="color: red"></p>
+    </div>
+  </div>
+  <div class="divTableRow">
+    <div class="divTableCell">&nbsp;</div>
+    <div class="divTableCell">&nbsp;</div>
+    <div class="divTableCell">&nbsp;</div>
+  </div>
+</div>
+</div>
+
+</main>
+</body>
+</html>

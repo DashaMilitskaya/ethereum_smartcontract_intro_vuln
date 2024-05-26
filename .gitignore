@@ -1,0 +1,24 @@
+node_modules
+.env
+
+.states
+
+/exploits
+
+# Hardhat files
+/cache
+/artifacts
+#/hardhat.config.js
+/contracts/artifacts
+
+# TypeChain files
+/typechain
+/typechain-types
+
+# solidity-coverage files
+/coverage
+/coverage.json
+
+#remix-compiler.config.js
+#package.json
+package-lock.json
